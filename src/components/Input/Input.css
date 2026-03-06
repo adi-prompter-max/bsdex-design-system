@@ -62,3 +62,47 @@
   border-color: var(--bsdex-medium-shade);
   color: var(--bsdex-light-tint);
 }
+
+.bsdex-input--dark .bsdex-input::placeholder {
+  color: var(--bsdex-medium-shade);
+}
+
+.bsdex-input--dark .bsdex-input__helper {
+  color: var(--bsdex-medium-shade);
+}
+
+.bsdex-input--dark.bsdex-input--focused .bsdex-input {
+  border-color: var(--bsdex-primary-tint);
+}
+
+.bsdex-input--dark.bsdex-input--error .bsdex-input {
+  border-color: var(--bsdex-danger-tint);
+}
+
+.bsdex-input--dark.bsdex-input--error .bsdex-input__helper {
+  color: var(--bsdex-danger-tint);
+}
+
+/* Disabled */
+.bsdex-input--disabled .bsdex-input {
+  background: var(--bsdex-light-tint);
+  color: var(--bsdex-medium-base);
+  cursor: not-allowed;
+}
+
+.bsdex-input--disabled .bsdex-input__label {
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-input--filled-disabled .bsdex-input {
+  background: var(--bsdex-light-tint);
+  color: var(--bsdex-medium-base);
+  cursor: not-allowed;
+}
+
+.bsdex-input--dark.bsdex-input--disabled .bsdex-input,
+.bsdex-input--dark.bsdex-input--filled-disabled .bsdex-input {
+  background: var(--bsdex-dark-base);
+  color: var(--bsdex-medium-shade);
+  border-color: var(--bsdex-dark-base);
+}

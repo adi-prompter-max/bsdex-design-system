@@ -4,7 +4,7 @@ export default {
   title: 'Components/Tabs',
   tags: ['autodocs'],
   argTypes: {
-    activeIndex: { control: { type: 'number', min: 0, max: 3 } },
+    activeIndex: { control: { type: 'number', min: 0, max: 4 } },
     mode: { control: 'select', options: ['light', 'dark'] },
   },
 };
@@ -13,11 +13,12 @@ const tabIcons = [
   `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5"/></svg>`,
   `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5"/></svg>`,
   `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 9h20" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/></svg>`,
   `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="1.5"/></svg>`,
 ];
 
 const createTabs = ({ activeIndex, mode }) => {
-  const labels = ['Invest', 'Wallet', 'Orders', 'Profile'];
+  const labels = ['Invest', 'Wallet', 'Orders', 'Transactions', 'Profile'];
   const container = document.createElement('div');
   container.style.cssText = mode === 'dark' ? 'background: #191c1d; padding: 0;' : '';
 
@@ -43,4 +44,14 @@ export const Light = {
 export const Dark = {
   render: (args) => createTabs(args),
   args: { activeIndex: 0, mode: 'dark' },
+};
+
+export const Wallet = {
+  render: (args) => createTabs(args),
+  args: { activeIndex: 1, mode: 'light' },
+};
+
+export const Transactions = {
+  render: (args) => createTabs(args),
+  args: { activeIndex: 3, mode: 'light' },
 };

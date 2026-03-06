@@ -45,3 +45,16 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Dark mode */
+.bsdex-pagination--dark .bsdex-pagination__item {
+  color: #ffffff;
+}
+
+.bsdex-pagination--dark .bsdex-pagination__item:hover:not(:disabled) {
+  background: var(--bsdex-dark-tint);
+}
+
+.bsdex-pagination--dark .bsdex-pagination__item:disabled {
+  color: var(--bsdex-medium-shade);
+}

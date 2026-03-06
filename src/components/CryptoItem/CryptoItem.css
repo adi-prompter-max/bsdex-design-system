@@ -88,3 +88,38 @@
 .bsdex-crypto-item--dark .bsdex-crypto-item__price {
   color: #ffffff;
 }
+
+/* Active state */
+.bsdex-crypto-item--active {
+  background: var(--bsdex-light-tint);
+}
+
+.bsdex-crypto-item--dark.bsdex-crypto-item--active {
+  background: var(--bsdex-dark-tint);
+}
+
+/* Transaction type */
+.bsdex-crypto-item--transaction .bsdex-crypto-item__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--bsdex-radius-sm);
+  font-size: 12px;
+}
+
+.bsdex-crypto-item__tx-type {
+  font-size: var(--bsdex-body-small-size);
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-crypto-item__tx-status {
+  font-size: var(--bsdex-body-tiny-size);
+  font-weight: 600;
+}
+
+.bsdex-crypto-item__tx-status--completed {
+  color: var(--bsdex-success-base);
+}
+
+.bsdex-crypto-item__tx-status--pending {
+  color: var(--bsdex-warning-base);
+}

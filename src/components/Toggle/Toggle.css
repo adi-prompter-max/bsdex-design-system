@@ -43,3 +43,16 @@
 .bsdex-toggle__input:checked + .bsdex-toggle__track .bsdex-toggle__thumb {
   transform: translateX(20px);
 }
+
+/* Dark mode */
+.bsdex-toggle--dark .bsdex-toggle__track {
+  background: var(--bsdex-medium-shade);
+}
+
+.bsdex-toggle--dark .bsdex-toggle__input:checked + .bsdex-toggle__track {
+  background: var(--bsdex-primary-tint);
+}
+
+.bsdex-toggle--dark .bsdex-toggle__thumb {
+  background: var(--bsdex-light-tint);
+}

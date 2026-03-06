@@ -21,3 +21,20 @@
   border-color: var(--bsdex-primary-base);
   color: #ffffff;
 }
+
+/* Dark mode */
+.bsdex-chip--dark {
+  border-color: var(--bsdex-medium-shade);
+  color: var(--bsdex-medium-shade);
+}
+
+.bsdex-chip--dark:hover {
+  border-color: var(--bsdex-primary-tint);
+  color: var(--bsdex-primary-tint);
+}
+
+.bsdex-chip--dark.bsdex-chip--active {
+  background: var(--bsdex-primary-tint);
+  border-color: var(--bsdex-primary-tint);
+  color: #ffffff;
+}

@@ -7,7 +7,7 @@ export default {
     label: { control: 'text' },
     placeholder: { control: 'text' },
     value: { control: 'text' },
-    state: { control: 'select', options: ['enabled', 'focused', 'filled', 'error'] },
+    state: { control: 'select', options: ['enabled', 'focused', 'filled', 'error', 'disabled', 'filled-disabled'] },
     mode: { control: 'select', options: ['light', 'dark'] },
     helperText: { control: 'text' },
   },
@@ -47,7 +47,37 @@ export const Error = {
   args: { label: 'Label', placeholder: '', value: 'Invalid', state: 'error', mode: 'light', helperText: 'This field has an error' },
 };
 
-export const AllStates = {
+export const Disabled = {
+  render: (args) => createInput(args),
+  args: { label: 'Label', placeholder: 'Placeholder', value: '', state: 'disabled', mode: 'light', helperText: '' },
+};
+
+export const FilledDisabled = {
+  render: (args) => createInput(args),
+  args: { label: 'Label', placeholder: '', value: '0.00234 BTC', state: 'filled-disabled', mode: 'light', helperText: '' },
+};
+
+export const DarkEnabled = {
+  render: (args) => createInput(args),
+  args: { label: 'Label', placeholder: 'Placeholder', value: '', state: 'enabled', mode: 'dark', helperText: '' },
+};
+
+export const DarkFocused = {
+  render: (args) => createInput(args),
+  args: { label: 'Label', placeholder: 'Placeholder', value: '', state: 'focused', mode: 'dark', helperText: '' },
+};
+
+export const DarkFilled = {
+  render: (args) => createInput(args),
+  args: { label: 'Label', placeholder: '', value: '0.00234 BTC', state: 'filled', mode: 'dark', helperText: '' },
+};
+
+export const DarkError = {
+  render: (args) => createInput(args),
+  args: { label: 'Label', placeholder: '', value: 'Invalid', state: 'error', mode: 'dark', helperText: 'This field has an error' },
+};
+
+export const AllStatesLight = {
   render: () => {
     const container = document.createElement('div');
     container.style.cssText = 'display: flex; gap: 24px; flex-wrap: wrap;';
@@ -56,7 +86,25 @@ export const AllStates = {
       { label: 'Focused', state: 'focused', placeholder: 'Placeholder', value: '' },
       { label: 'Filled', state: 'filled', placeholder: '', value: '0.00234 BTC' },
       { label: 'Error', state: 'error', placeholder: '', value: 'Invalid', helperText: 'Error message' },
+      { label: 'Disabled', state: 'disabled', placeholder: 'Placeholder', value: '' },
+      { label: 'Filled Disabled', state: 'filled-disabled', placeholder: '', value: '0.00234 BTC' },
     ].forEach(s => container.appendChild(createInput({ ...s, mode: 'light' })));
+    return container;
+  },
+};
+
+export const AllStatesDark = {
+  render: () => {
+    const container = document.createElement('div');
+    container.style.cssText = 'display: flex; gap: 24px; flex-wrap: wrap; background: #191c1d; padding: 24px; border-radius: 8px;';
+    [
+      { label: 'Enabled', state: 'enabled', placeholder: 'Placeholder', value: '' },
+      { label: 'Focused', state: 'focused', placeholder: 'Placeholder', value: '' },
+      { label: 'Filled', state: 'filled', placeholder: '', value: '0.00234 BTC' },
+      { label: 'Error', state: 'error', placeholder: '', value: 'Invalid', helperText: 'Error message' },
+      { label: 'Disabled', state: 'disabled', placeholder: 'Placeholder', value: '' },
+      { label: 'Filled Disabled', state: 'filled-disabled', placeholder: '', value: '0.00234 BTC' },
+    ].forEach(s => container.appendChild(createInput({ ...s, mode: 'dark' })));
     return container;
   },
 };
