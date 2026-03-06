@@ -1,0 +1,23 @@
+.bsdex-chip {
+  font-family: var(--bsdex-font-family);
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--bsdex-radius-full);
+  border: 1px solid var(--bsdex-light-shade);
+  background: transparent;
+  color: var(--bsdex-medium-base);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bsdex-chip:hover {
+  border-color: var(--bsdex-primary-tint);
+  color: var(--bsdex-primary-tint);
+}
+
+.bsdex-chip--active {
+  background: var(--bsdex-primary-base);
+  border-color: var(--bsdex-primary-base);
+  color: #ffffff;
+}

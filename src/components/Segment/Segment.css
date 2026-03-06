@@ -1,0 +1,40 @@
+.bsdex-segment {
+  display: inline-flex;
+  border-radius: var(--bsdex-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--bsdex-light-shade);
+}
+
+.bsdex-segment--dark {
+  border-color: var(--bsdex-dark-tint);
+}
+
+.bsdex-segment__item {
+  font-family: var(--bsdex-font-family);
+  font-size: var(--bsdex-body-default-size);
+  font-weight: 600;
+  padding: 8px 24px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bsdex-segment--light .bsdex-segment__item {
+  background: var(--bsdex-light-tint);
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-segment--light .bsdex-segment__item--active {
+  background: var(--bsdex-primary-base);
+  color: #ffffff;
+}
+
+.bsdex-segment--dark .bsdex-segment__item {
+  background: var(--bsdex-dark-base);
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-segment--dark .bsdex-segment__item--active {
+  background: var(--bsdex-primary-base);
+  color: #ffffff;
+}

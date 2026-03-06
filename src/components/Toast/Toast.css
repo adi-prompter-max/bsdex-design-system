@@ -1,0 +1,40 @@
+.bsdex-toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--bsdex-radius-md);
+  font-family: var(--bsdex-font-family);
+  font-size: var(--bsdex-body-default-size);
+  line-height: var(--bsdex-body-default-line-height);
+  font-weight: 400;
+}
+
+.bsdex-toast--success {
+  background-color: #e8f5e9;
+  color: var(--bsdex-success-shade);
+}
+
+.bsdex-toast--info {
+  background-color: #ede7f6;
+  color: var(--bsdex-primary-shade);
+}
+
+.bsdex-toast--warning {
+  background-color: #fff8e1;
+  color: var(--bsdex-warning-shade);
+}
+
+.bsdex-toast--danger {
+  background-color: #fce4ec;
+  color: var(--bsdex-danger-shade);
+}
+
+.bsdex-toast__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.bsdex-toast__message {
+  flex: 1;
+}

@@ -1,0 +1,14 @@
+.bsdex-divider {
+  border: none;
+  height: 1px;
+  width: 100%;
+  margin: 0;
+}
+
+.bsdex-divider--light {
+  background-color: var(--bsdex-light-base);
+}
+
+.bsdex-divider--dark {
+  background-color: var(--bsdex-dark-tint);
+}

@@ -1,0 +1,109 @@
+:root {
+  /* Primary */
+  --bsdex-primary-base: #6432fa;
+  --bsdex-primary-tint: #7d58ff;
+  --bsdex-primary-shade: #4700d8;
+
+  /* Success */
+  --bsdex-success-base: #289646;
+  --bsdex-success-tint: #3ea159;
+  --bsdex-success-shade: #23843e;
+
+  /* Warning */
+  --bsdex-warning-base: #ffc800;
+  --bsdex-warning-tint: #ffce1a;
+  --bsdex-warning-shade: #e0b000;
+
+  /* Danger */
+  --bsdex-danger-base: #ea0658;
+  --bsdex-danger-tint: #ec1f69;
+  --bsdex-danger-shade: #ce054d;
+
+  /* Dark */
+  --bsdex-dark-base: #191c1d;
+  --bsdex-dark-tint: #2d3132;
+  --bsdex-dark-shade: #000000;
+
+  /* Medium */
+  --bsdex-medium-base: #7c7c7c;
+  --bsdex-medium-tint: #2d3132;
+  --bsdex-medium-shade: #5c5f60;
+
+  /* Light */
+  --bsdex-light-base: #e0e3e3;
+  --bsdex-light-tint: #eff1f1;
+  --bsdex-light-shade: #c4c7c7;
+
+  /* General */
+  --bsdex-surface: #ffffff;
+  --bsdex-text: #000000;
+
+  /* Typography - Font Family */
+  --bsdex-font-family: 'Euclid Circular B', sans-serif;
+
+  /* Typography - Headings */
+  --bsdex-h1-size: 28px;
+  --bsdex-h1-weight: 600;
+  --bsdex-h1-line-height: 36px;
+
+  --bsdex-h2-size: 20px;
+  --bsdex-h2-weight: 600;
+  --bsdex-h2-line-height: 24px;
+
+  --bsdex-h3-size: 16px;
+  --bsdex-h3-weight: 600;
+  --bsdex-h3-line-height: 24px;
+
+  --bsdex-h4-size: 14px;
+  --bsdex-h4-weight: 600;
+  --bsdex-h4-line-height: 20px;
+
+  --bsdex-h5-size: 12px;
+  --bsdex-h5-weight: 600;
+  --bsdex-h5-line-height: 16px;
+
+  /* Typography - Body */
+  --bsdex-body-main-size: 16px;
+  --bsdex-body-main-weight: 400;
+  --bsdex-body-main-line-height: 27px;
+
+  --bsdex-body-default-size: 14px;
+  --bsdex-body-default-weight: 400;
+  --bsdex-body-default-line-height: 27px;
+
+  --bsdex-body-small-size: 12px;
+  --bsdex-body-small-weight: 400;
+  --bsdex-body-small-line-height: 16px;
+
+  --bsdex-body-tiny-size: 10px;
+  --bsdex-body-tiny-weight: 400;
+  --bsdex-body-tiny-line-height: 12px;
+
+  /* Spacing */
+  --bsdex-spacing-4: 4px;
+  --bsdex-spacing-8: 8px;
+  --bsdex-spacing-10: 10px;
+  --bsdex-spacing-12: 12px;
+  --bsdex-spacing-16: 16px;
+  --bsdex-spacing-24: 24px;
+  --bsdex-spacing-40: 40px;
+
+  /* Border Radius */
+  --bsdex-radius-sm: 4px;
+  --bsdex-radius-md: 8px;
+  --bsdex-radius-lg: 16px;
+  --bsdex-radius-full: 100px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--bsdex-font-family);
+  color: var(--bsdex-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

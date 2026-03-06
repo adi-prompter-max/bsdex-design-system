@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundation/Typography" />
+
+# Typography
+
+BSDEX uses **Euclid Circular B** as the primary typeface. The type scale is designed for clarity and hierarchy across all screen sizes.
+
+## Headings
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginBottom: '32px' }}>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 28, fontWeight: 600, lineHeight: '36px' }}>Heading H1</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>28px / 600 / 36px line-height</code>
+  </div>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 20, fontWeight: 600, lineHeight: '24px' }}>Heading H2</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>20px / 600 / 24px line-height</code>
+  </div>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 16, fontWeight: 600, lineHeight: '24px' }}>Heading H3</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>16px / 600 / 24px line-height</code>
+  </div>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 14, fontWeight: 600, lineHeight: '20px' }}>Heading H4</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>14px / 600 / 20px line-height</code>
+  </div>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 12, fontWeight: 600, lineHeight: '16px' }}>Heading H5</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>12px / 600 / 16px line-height</code>
+  </div>
+</div>
+
+## Body
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginBottom: '32px' }}>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 16, fontWeight: 400, lineHeight: '27px' }}>Body Main — The quick brown fox jumps over the lazy dog</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>16px / 400 / 27px line-height</code>
+  </div>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 16, fontWeight: 600, lineHeight: '27px' }}>Body Main Semi — The quick brown fox jumps over the lazy dog</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>16px / 600 / 27px line-height</code>
+  </div>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 14, fontWeight: 400, lineHeight: '27px' }}>Body Default — The quick brown fox jumps over the lazy dog</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>14px / 400 / 27px line-height</code>
+  </div>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 12, fontWeight: 400, lineHeight: '16px' }}>Body Small — The quick brown fox jumps over the lazy dog</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>12px / 400 / 16px line-height</code>
+  </div>
+  <div style={{ borderBottom: '1px solid #e0e3e3', paddingBottom: 16 }}>
+    <div style={{ fontSize: 10, fontWeight: 400, lineHeight: '12px' }}>Body Tiny — The quick brown fox jumps over the lazy dog</div>
+    <code style={{ fontSize: 11, color: '#7c7c7c' }}>10px / 400 / 12px line-height</code>
+  </div>
+</div>
+
+## CSS Variables
+
+```css
+/* Headings */
+var(--bsdex-h1-size)           /* 28px */
+var(--bsdex-h1-weight)         /* 600 */
+var(--bsdex-h1-line-height)    /* 36px */
+
+/* Body */
+var(--bsdex-body-main-size)    /* 16px */
+var(--bsdex-body-default-size) /* 14px */
+var(--bsdex-body-small-size)   /* 12px */
+var(--bsdex-body-tiny-size)    /* 10px */
+
+/* Font Family */
+var(--bsdex-font-family)       /* 'Euclid Circular B', sans-serif */
+```
