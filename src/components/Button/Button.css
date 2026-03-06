@@ -81,3 +81,57 @@
   width: 24px;
   height: 24px;
 }
+
+/* Dark mode */
+.bsdex-button--dark.bsdex-button--solid {
+  background: var(--bsdex-primary-tint);
+  color: #ffffff;
+}
+
+.bsdex-button--dark.bsdex-button--solid:hover:not(:disabled) {
+  background: var(--bsdex-primary-base);
+}
+
+.bsdex-button--dark.bsdex-button--outline {
+  background: transparent;
+  border-color: var(--bsdex-medium-shade);
+  color: #ffffff;
+}
+
+.bsdex-button--dark.bsdex-button--outline:hover:not(:disabled) {
+  background: var(--bsdex-dark-tint);
+}
+
+/* Loading state */
+.bsdex-button--loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.bsdex-button--loading::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: bsdex-spin 0.6s linear infinite;
+}
+
+.bsdex-button--loading.bsdex-button--solid::after {
+  border-top-color: #ffffff;
+}
+
+.bsdex-button--loading.bsdex-button--outline::after {
+  border-top-color: var(--bsdex-primary-base);
+}
+
+.bsdex-button--loading.bsdex-button--dark.bsdex-button--outline::after {
+  border-top-color: #ffffff;
+}
+
+@keyframes bsdex-spin {
+  to { transform: rotate(360deg); }
+}

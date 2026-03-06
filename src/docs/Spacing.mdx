@@ -1,0 +1,91 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundation/Spacing" />
+
+# Spacing
+
+The BSDEX spacing scale provides consistent spacing tokens for margins, paddings, and gaps throughout the interface.
+
+## Spacing Scale
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <code style={{ fontSize: 11, width: 180, flexShrink: 0 }}>--bsdex-spacing-4</code>
+    <span style={{ fontSize: 12, width: 40, flexShrink: 0, color: '#7c7c7c' }}>4px</span>
+    <div style={{ width: 4, height: 24, background: '#6432fa', borderRadius: 2 }} />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <code style={{ fontSize: 11, width: 180, flexShrink: 0 }}>--bsdex-spacing-8</code>
+    <span style={{ fontSize: 12, width: 40, flexShrink: 0, color: '#7c7c7c' }}>8px</span>
+    <div style={{ width: 8, height: 24, background: '#6432fa', borderRadius: 2 }} />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <code style={{ fontSize: 11, width: 180, flexShrink: 0 }}>--bsdex-spacing-10</code>
+    <span style={{ fontSize: 12, width: 40, flexShrink: 0, color: '#7c7c7c' }}>10px</span>
+    <div style={{ width: 10, height: 24, background: '#6432fa', borderRadius: 2 }} />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <code style={{ fontSize: 11, width: 180, flexShrink: 0 }}>--bsdex-spacing-12</code>
+    <span style={{ fontSize: 12, width: 40, flexShrink: 0, color: '#7c7c7c' }}>12px</span>
+    <div style={{ width: 12, height: 24, background: '#6432fa', borderRadius: 2 }} />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <code style={{ fontSize: 11, width: 180, flexShrink: 0 }}>--bsdex-spacing-16</code>
+    <span style={{ fontSize: 12, width: 40, flexShrink: 0, color: '#7c7c7c' }}>16px</span>
+    <div style={{ width: 16, height: 24, background: '#6432fa', borderRadius: 2 }} />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <code style={{ fontSize: 11, width: 180, flexShrink: 0 }}>--bsdex-spacing-24</code>
+    <span style={{ fontSize: 12, width: 40, flexShrink: 0, color: '#7c7c7c' }}>24px</span>
+    <div style={{ width: 24, height: 24, background: '#6432fa', borderRadius: 2 }} />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <code style={{ fontSize: 11, width: 180, flexShrink: 0 }}>--bsdex-spacing-40</code>
+    <span style={{ fontSize: 12, width: 40, flexShrink: 0, color: '#7c7c7c' }}>40px</span>
+    <div style={{ width: 40, height: 24, background: '#6432fa', borderRadius: 2 }} />
+  </div>
+</div>
+
+## Border Radius
+
+<div style={{ display: 'flex', gap: '24px', marginBottom: '32px' }}>
+  <div style={{ textAlign: 'center' }}>
+    <div style={{ width: 80, height: 80, borderRadius: 4, background: '#eff1f1', border: '1px solid #e0e3e3' }} />
+    <div style={{ fontSize: 12, marginTop: 8, fontWeight: 600 }}>--bsdex-radius-sm</div>
+    <code style={{ fontSize: 11 }}>4px</code>
+  </div>
+  <div style={{ textAlign: 'center' }}>
+    <div style={{ width: 80, height: 80, borderRadius: 8, background: '#eff1f1', border: '1px solid #e0e3e3' }} />
+    <div style={{ fontSize: 12, marginTop: 8, fontWeight: 600 }}>--bsdex-radius-md</div>
+    <code style={{ fontSize: 11 }}>8px</code>
+  </div>
+  <div style={{ textAlign: 'center' }}>
+    <div style={{ width: 80, height: 80, borderRadius: 16, background: '#eff1f1', border: '1px solid #e0e3e3' }} />
+    <div style={{ fontSize: 12, marginTop: 8, fontWeight: 600 }}>--bsdex-radius-lg</div>
+    <code style={{ fontSize: 11 }}>16px</code>
+  </div>
+  <div style={{ textAlign: 'center' }}>
+    <div style={{ width: 80, height: 80, borderRadius: 100, background: '#eff1f1', border: '1px solid #e0e3e3' }} />
+    <div style={{ fontSize: 12, marginTop: 8, fontWeight: 600 }}>--bsdex-radius-full</div>
+    <code style={{ fontSize: 11 }}>100px</code>
+  </div>
+</div>
+
+## CSS Variables
+
+```css
+/* Spacing */
+var(--bsdex-spacing-4)      /* 4px */
+var(--bsdex-spacing-8)      /* 8px */
+var(--bsdex-spacing-10)     /* 10px */
+var(--bsdex-spacing-12)     /* 12px */
+var(--bsdex-spacing-16)     /* 16px */
+var(--bsdex-spacing-24)     /* 24px */
+var(--bsdex-spacing-40)     /* 40px */
+
+/* Border Radius */
+var(--bsdex-radius-sm)      /* 4px */
+var(--bsdex-radius-md)      /* 8px */
+var(--bsdex-radius-lg)      /* 16px */
+var(--bsdex-radius-full)    /* 100px */
+```

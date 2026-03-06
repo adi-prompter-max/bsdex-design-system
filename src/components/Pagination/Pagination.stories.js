@@ -31,6 +31,12 @@ const createPagination = ({ totalPages, currentPage, mode = 'light' }) => {
     btn.className = `bsdex-pagination__item${i === currentPage ? ' bsdex-pagination__item--active' : ''}`;
     btn.textContent = i;
     nav.appendChild(btn);
+    btn.addEventListener('click', () => {
+      nav.querySelectorAll('.bsdex-pagination__item:not(.bsdex-pagination__arrow)').forEach(b => b.classList.remove('bsdex-pagination__item--active'));
+      btn.classList.add('bsdex-pagination__item--active');
+      prevBtn.disabled = (i === 1);
+      nextBtn.disabled = (i === totalPages);
+    });
   }
 
   const nextBtn = document.createElement('button');
@@ -38,6 +44,21 @@ const createPagination = ({ totalPages, currentPage, mode = 'light' }) => {
   nextBtn.innerHTML = arrowRight;
   if (currentPage === totalPages) nextBtn.disabled = true;
   nav.appendChild(nextBtn);
+
+  prevBtn.addEventListener('click', () => {
+    const active = nav.querySelector('.bsdex-pagination__item--active');
+    const prev = active?.previousElementSibling;
+    if (prev && !prev.classList.contains('bsdex-pagination__arrow')) {
+      prev.click();
+    }
+  });
+  nextBtn.addEventListener('click', () => {
+    const active = nav.querySelector('.bsdex-pagination__item--active');
+    const next = active?.nextElementSibling;
+    if (next && !next.classList.contains('bsdex-pagination__arrow')) {
+      next.click();
+    }
+  });
 
   wrapper.appendChild(nav);
   return wrapper;

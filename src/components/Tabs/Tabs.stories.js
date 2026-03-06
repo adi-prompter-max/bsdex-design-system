@@ -30,6 +30,10 @@ const createTabs = ({ activeIndex, mode }) => {
     tab.className = `bsdex-tabs__item${i === activeIndex ? ' bsdex-tabs__item--active' : ''}`;
     tab.innerHTML = `<span class="bsdex-tabs__icon">${tabIcons[i]}</span><span class="bsdex-tabs__label">${label}</span>`;
     nav.appendChild(tab);
+    tab.addEventListener('click', () => {
+      nav.querySelectorAll('.bsdex-tabs__item').forEach(t => t.classList.remove('bsdex-tabs__item--active'));
+      tab.classList.add('bsdex-tabs__item--active');
+    });
   });
 
   container.appendChild(nav);
