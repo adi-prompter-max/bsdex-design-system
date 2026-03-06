@@ -1,0 +1,83 @@
+.bsdex-open-order {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: var(--bsdex-radius-md);
+  font-family: var(--bsdex-font-family);
+}
+
+.bsdex-open-order--light {
+  background: var(--bsdex-surface);
+  border: 1px solid var(--bsdex-light-base);
+}
+
+.bsdex-open-order--dark {
+  background: var(--bsdex-dark-tint);
+  border: 1px solid var(--bsdex-dark-tint);
+}
+
+.bsdex-open-order__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bsdex-open-order__pair {
+  font-size: var(--bsdex-body-default-size);
+  font-weight: 600;
+}
+
+.bsdex-open-order__type {
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--bsdex-radius-full);
+}
+
+.bsdex-open-order__type--buy {
+  background: #e8f5e9;
+  color: var(--bsdex-success-shade);
+}
+
+.bsdex-open-order__type--sell {
+  background: #fce4ec;
+  color: var(--bsdex-danger-shade);
+}
+
+.bsdex-open-order__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bsdex-open-order__label {
+  font-size: var(--bsdex-body-small-size);
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-open-order__value {
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+}
+
+.bsdex-open-order--light .bsdex-open-order__pair,
+.bsdex-open-order--light .bsdex-open-order__value {
+  color: var(--bsdex-dark-base);
+}
+
+.bsdex-open-order--dark .bsdex-open-order__pair,
+.bsdex-open-order--dark .bsdex-open-order__value {
+  color: #ffffff;
+}
+
+.bsdex-open-order__cancel {
+  font-family: var(--bsdex-font-family);
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+  color: var(--bsdex-danger-base);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: left;
+}

@@ -1,0 +1,105 @@
+.bsdex-withdraw {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-radius: var(--bsdex-radius-md);
+  font-family: var(--bsdex-font-family);
+}
+
+.bsdex-withdraw--light {
+  background: var(--bsdex-surface);
+  border: 1px solid var(--bsdex-light-base);
+}
+
+.bsdex-withdraw--dark {
+  background: var(--bsdex-dark-tint);
+}
+
+.bsdex-withdraw__title {
+  font-size: var(--bsdex-h3-size);
+  font-weight: 600;
+}
+
+.bsdex-withdraw--light .bsdex-withdraw__title { color: var(--bsdex-dark-base); }
+.bsdex-withdraw--dark .bsdex-withdraw__title { color: #ffffff; }
+
+.bsdex-withdraw__balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bsdex-withdraw__balance-label {
+  font-size: var(--bsdex-body-small-size);
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-withdraw__balance-value {
+  font-size: var(--bsdex-body-default-size);
+  font-weight: 600;
+}
+
+.bsdex-withdraw--light .bsdex-withdraw__balance-value { color: var(--bsdex-dark-base); }
+.bsdex-withdraw--dark .bsdex-withdraw__balance-value { color: #ffffff; }
+
+.bsdex-withdraw__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bsdex-withdraw__field-label {
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-withdraw__field-input {
+  padding: 10px 16px;
+  border: 1.5px solid var(--bsdex-light-shade);
+  border-radius: var(--bsdex-radius-md);
+  font-family: var(--bsdex-font-family);
+  font-size: var(--bsdex-body-default-size);
+  outline: none;
+}
+
+.bsdex-withdraw--light .bsdex-withdraw__field-input {
+  background: var(--bsdex-surface);
+  color: var(--bsdex-dark-base);
+}
+
+.bsdex-withdraw--dark .bsdex-withdraw__field-input {
+  background: var(--bsdex-dark-base);
+  color: #ffffff;
+  border-color: var(--bsdex-medium-shade);
+}
+
+.bsdex-withdraw__max {
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+  color: var(--bsdex-primary-base);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  align-self: flex-end;
+}
+
+.bsdex-withdraw__submit {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--bsdex-radius-full);
+  font-family: var(--bsdex-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--bsdex-primary-base);
+  cursor: pointer;
+}
+
+.bsdex-withdraw__info {
+  font-size: var(--bsdex-body-small-size);
+  color: var(--bsdex-medium-base);
+  line-height: 1.5;
+}

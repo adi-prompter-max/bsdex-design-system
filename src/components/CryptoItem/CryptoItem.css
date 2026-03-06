@@ -1,0 +1,90 @@
+.bsdex-crypto-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 12px;
+  font-family: var(--bsdex-font-family);
+  border-radius: var(--bsdex-radius-md);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.bsdex-crypto-item:hover {
+  background: var(--bsdex-light-tint);
+}
+
+.bsdex-crypto-item--dark:hover {
+  background: var(--bsdex-dark-tint);
+}
+
+.bsdex-crypto-item__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.bsdex-crypto-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.bsdex-crypto-item__name {
+  font-size: var(--bsdex-body-default-size);
+  font-weight: 600;
+}
+
+.bsdex-crypto-item__symbol {
+  font-size: var(--bsdex-body-small-size);
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-crypto-item__price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.bsdex-crypto-item__price {
+  font-size: var(--bsdex-body-default-size);
+  font-weight: 600;
+}
+
+.bsdex-crypto-item__change {
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+}
+
+.bsdex-crypto-item__change--positive {
+  color: var(--bsdex-success-base);
+}
+
+.bsdex-crypto-item__change--negative {
+  color: var(--bsdex-danger-base);
+}
+
+.bsdex-crypto-item--light .bsdex-crypto-item__name {
+  color: var(--bsdex-dark-base);
+}
+
+.bsdex-crypto-item--light .bsdex-crypto-item__price {
+  color: var(--bsdex-dark-base);
+}
+
+.bsdex-crypto-item--dark .bsdex-crypto-item__name {
+  color: #ffffff;
+}
+
+.bsdex-crypto-item--dark .bsdex-crypto-item__price {
+  color: #ffffff;
+}

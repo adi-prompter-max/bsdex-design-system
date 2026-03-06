@@ -1,0 +1,47 @@
+.bsdex-pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--bsdex-font-family);
+}
+
+.bsdex-pagination__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--bsdex-radius-sm);
+  border: none;
+  background: transparent;
+  font-size: var(--bsdex-body-default-size);
+  font-weight: 600;
+  color: var(--bsdex-dark-base);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bsdex-pagination__item:hover:not(:disabled) {
+  background: var(--bsdex-light-tint);
+}
+
+.bsdex-pagination__item--active {
+  background: var(--bsdex-primary-base);
+  color: #ffffff;
+}
+
+.bsdex-pagination__item--active:hover {
+  background: var(--bsdex-primary-tint) !important;
+  color: #ffffff;
+}
+
+.bsdex-pagination__item:disabled {
+  color: var(--bsdex-light-shade);
+  cursor: not-allowed;
+}
+
+.bsdex-pagination__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

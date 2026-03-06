@@ -1,0 +1,47 @@
+.bsdex-chart-filters {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--bsdex-radius-md);
+  font-family: var(--bsdex-font-family);
+}
+
+.bsdex-chart-filters--light {
+  background: var(--bsdex-light-tint);
+}
+
+.bsdex-chart-filters--dark {
+  background: var(--bsdex-dark-base);
+}
+
+.bsdex-chart-filter {
+  padding: 4px 12px;
+  border: none;
+  border-radius: var(--bsdex-radius-sm);
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--bsdex-font-family);
+}
+
+.bsdex-chart-filters--light .bsdex-chart-filter {
+  background: transparent;
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-chart-filters--light .bsdex-chart-filter--active {
+  background: var(--bsdex-surface);
+  color: var(--bsdex-dark-base);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.bsdex-chart-filters--dark .bsdex-chart-filter {
+  background: transparent;
+  color: var(--bsdex-medium-shade);
+}
+
+.bsdex-chart-filters--dark .bsdex-chart-filter--active {
+  background: var(--bsdex-dark-tint);
+  color: #ffffff;
+}

@@ -1,0 +1,48 @@
+.bsdex-subnav {
+  display: flex;
+  gap: 24px;
+  border-bottom: 2px solid var(--bsdex-light-base);
+  font-family: var(--bsdex-font-family);
+}
+
+.bsdex-subnav--dark {
+  border-bottom-color: var(--bsdex-dark-tint);
+}
+
+.bsdex-subnav__item {
+  padding: 8px 0;
+  border: none;
+  background: none;
+  font-size: var(--bsdex-body-default-size);
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s ease;
+}
+
+.bsdex-subnav--light .bsdex-subnav__item {
+  color: var(--bsdex-medium-base);
+}
+
+.bsdex-subnav--light .bsdex-subnav__item--active {
+  color: var(--bsdex-primary-base);
+}
+
+.bsdex-subnav--dark .bsdex-subnav__item {
+  color: var(--bsdex-medium-shade);
+}
+
+.bsdex-subnav--dark .bsdex-subnav__item--active {
+  color: var(--bsdex-primary-tint);
+}
+
+.bsdex-subnav__item--active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--bsdex-primary-base);
+  border-radius: 1px;
+}

@@ -1,0 +1,117 @@
+.bsdex-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--bsdex-font-family);
+  padding: 16px;
+  border-radius: var(--bsdex-radius-md);
+}
+
+.bsdex-chart--light {
+  background: var(--bsdex-surface);
+}
+
+.bsdex-chart--dark {
+  background: var(--bsdex-dark-base);
+}
+
+.bsdex-chart__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bsdex-chart__price {
+  font-size: var(--bsdex-h2-size);
+  font-weight: 600;
+}
+
+.bsdex-chart--light .bsdex-chart__price {
+  color: var(--bsdex-dark-base);
+}
+
+.bsdex-chart--dark .bsdex-chart__price {
+  color: #ffffff;
+}
+
+.bsdex-chart__change--positive {
+  color: var(--bsdex-success-base);
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+}
+
+.bsdex-chart__change--negative {
+  color: var(--bsdex-danger-base);
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+}
+
+.bsdex-chart__area {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bsdex-chart__line-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bsdex-chart__candle-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 100%;
+  padding: 0 4px;
+}
+
+.bsdex-chart__candle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.bsdex-chart__candle-wick {
+  width: 1px;
+  background: var(--bsdex-medium-base);
+}
+
+.bsdex-chart__candle-body {
+  width: 60%;
+  min-height: 4px;
+  border-radius: 1px;
+}
+
+.bsdex-chart__candle-body--up {
+  background: var(--bsdex-success-base);
+}
+
+.bsdex-chart__candle-body--down {
+  background: var(--bsdex-danger-base);
+}
+
+.bsdex-chart__type-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.bsdex-chart__type-tab {
+  padding: 4px 12px;
+  border: 1px solid var(--bsdex-light-shade);
+  border-radius: var(--bsdex-radius-full);
+  background: transparent;
+  font-family: var(--bsdex-font-family);
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+  color: var(--bsdex-medium-base);
+  cursor: pointer;
+}
+
+.bsdex-chart__type-tab--active {
+  background: var(--bsdex-primary-base);
+  border-color: var(--bsdex-primary-base);
+  color: #ffffff;
+}

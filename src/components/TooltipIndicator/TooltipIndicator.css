@@ -1,0 +1,54 @@
+.bsdex-tooltip {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--bsdex-font-family);
+}
+
+.bsdex-tooltip__line {
+  width: 1px;
+  height: 60px;
+  background: var(--bsdex-medium-base);
+  opacity: 0.4;
+}
+
+.bsdex-tooltip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bsdex-primary-base);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px var(--bsdex-primary-base);
+}
+
+.bsdex-tooltip__card {
+  padding: 8px 12px;
+  border-radius: var(--bsdex-radius-sm);
+  font-size: var(--bsdex-body-small-size);
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.bsdex-tooltip__card--light {
+  background: var(--bsdex-surface);
+  color: var(--bsdex-dark-base);
+  border: 1px solid var(--bsdex-light-base);
+}
+
+.bsdex-tooltip__card--dark {
+  background: var(--bsdex-dark-tint);
+  color: #ffffff;
+  border: 1px solid var(--bsdex-dark-tint);
+}
+
+.bsdex-tooltip__price {
+  font-size: var(--bsdex-body-default-size);
+  font-weight: 600;
+}
+
+.bsdex-tooltip__date {
+  font-size: var(--bsdex-body-tiny-size);
+  color: var(--bsdex-medium-base);
+}
