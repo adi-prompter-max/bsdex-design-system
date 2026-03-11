@@ -1,23 +1,32 @@
-.bsdex-icon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 16px;
+/* ------------------------------------------------------------------ */
+/*  Icons – Ionic grid layout                                         */
+/* ------------------------------------------------------------------ */
+
+ion-grid.bsdex-icon-grid {
+  --ion-grid-padding: 0;
 }
 
-.bsdex-icon-item {
+ion-grid.bsdex-icon-grid ion-col {
+  --ion-grid-column-padding: 8px;
+}
+
+ion-card.bsdex-icon-card {
+  --background: #ffffff;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   padding: 16px 8px;
-  border-radius: var(--bsdex-radius-md);
-  border: 1px solid var(--bsdex-light-base);
+  border-radius: var(--bsdex-radius-md, 8px);
+  border: 1px solid var(--bsdex-light-base, #e2e8f0);
+  box-shadow: none;
   transition: border-color 0.15s ease, background 0.15s ease;
   cursor: default;
 }
 
-.bsdex-icon-item:hover {
-  border-color: var(--bsdex-primary-tint);
+ion-card.bsdex-icon-card:hover {
+  border-color: var(--bsdex-primary-tint, #8b6bfa);
   background: #f8f6ff;
 }
 
@@ -25,20 +34,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--bsdex-dark-base);
+  color: var(--bsdex-dark-base, #1a1a1a);
 }
 
 .bsdex-icon-name {
-  font-family: var(--bsdex-font-family);
+  font-family: var(--bsdex-font-family, sans-serif);
   font-size: 11px;
   font-weight: 500;
-  color: var(--bsdex-dark-base);
+  color: var(--bsdex-dark-base, #1a1a1a);
   text-align: center;
   word-break: break-all;
 }
 
 .bsdex-icon-size {
-  font-family: var(--bsdex-font-family);
+  font-family: var(--bsdex-font-family, sans-serif);
   font-size: 10px;
-  color: var(--bsdex-medium-base);
+  color: var(--bsdex-medium-base, #718096);
 }

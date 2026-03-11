@@ -1,105 +1,44 @@
-.bsdex-trade {
+/* ==========================================================================
+   Trade – Ionic web-component overrides & BSDEX tokens
+   ========================================================================== */
+
+/* Card content spacing */
+.bsdex-trade-card__content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px;
-  border-radius: var(--bsdex-radius-md);
-  font-family: var(--bsdex-font-family);
-  width: 100%;
+  gap: 8px;
+  padding: 20px !important;
 }
 
-.bsdex-trade--light {
-  background: var(--bsdex-surface);
-  border: 1px solid var(--bsdex-light-base);
+/* ---- Segment ---- */
+.bsdex-trade-segment {
+  --border-radius: var(--bsdex-radius-md);
+  margin-bottom: 4px;
 }
 
-.bsdex-trade--dark {
-  background: var(--bsdex-dark-tint);
+/* Buy-active: green indicator */
+.bsdex-trade-segment--buy {
+  --ion-color-primary: var(--bsdex-success-base);
 }
 
-.bsdex-trade__segment {
-  display: flex;
-  border-radius: var(--bsdex-radius-md);
-  overflow: hidden;
-  border: 1px solid var(--bsdex-light-shade);
+/* Sell-active: red indicator */
+.bsdex-trade-segment--sell {
+  --ion-color-primary: var(--bsdex-danger-base);
 }
 
-.bsdex-trade__segment-btn {
-  flex: 1;
-  padding: 8px;
-  border: none;
-  font-family: var(--bsdex-font-family);
-  font-size: var(--bsdex-body-default-size);
+.bsdex-trade-segment ion-segment-button {
+  --indicator-color: var(--ion-color-primary);
+  --color: var(--bsdex-medium-base);
+  --color-checked: #ffffff;
   font-weight: 600;
-  cursor: pointer;
-}
-
-.bsdex-trade__segment-btn--active-buy {
-  background: var(--bsdex-success-base);
-  color: #ffffff;
-}
-
-.bsdex-trade__segment-btn--active-sell {
-  background: var(--bsdex-danger-base);
-  color: #ffffff;
-}
-
-.bsdex-trade__segment-btn--inactive {
-  background: transparent;
-  color: var(--bsdex-medium-base);
-}
-
-.bsdex-trade__field {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.bsdex-trade__field-label {
-  font-size: var(--bsdex-body-small-size);
-  color: var(--bsdex-medium-base);
-  font-weight: 600;
-}
-
-.bsdex-trade__field-input {
-  padding: 10px 16px;
-  border: 1.5px solid var(--bsdex-light-shade);
-  border-radius: var(--bsdex-radius-md);
   font-family: var(--bsdex-font-family);
-  font-size: var(--bsdex-body-default-size);
-  outline: none;
+  min-height: 38px;
 }
 
-.bsdex-trade--light .bsdex-trade__field-input {
-  background: var(--bsdex-surface);
-  color: var(--bsdex-dark-base);
-}
-
-.bsdex-trade--dark .bsdex-trade__field-input {
-  background: var(--bsdex-dark-base);
-  color: #ffffff;
-  border-color: var(--bsdex-medium-shade);
-}
-
-.bsdex-trade--dark .bsdex-trade__segment {
-  border-color: var(--bsdex-dark-base);
-}
-
-.bsdex-trade__submit {
-  padding: 12px 24px;
-  border: none;
-  border-radius: var(--bsdex-radius-full);
+/* ---- Submit Button ---- */
+.bsdex-trade-submit {
+  --border-radius: var(--bsdex-radius-full);
   font-family: var(--bsdex-font-family);
-  font-size: 16px;
   font-weight: 600;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.bsdex-trade__submit--buy {
-  background: var(--bsdex-success-base);
-}
-
-.bsdex-trade__submit--sell {
-  background: var(--bsdex-danger-base);
+  margin-top: 8px;
 }

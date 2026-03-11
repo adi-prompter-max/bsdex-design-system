@@ -1,4 +1,6 @@
 import './Icons.css';
+import { createCodeSnippet } from '../../helpers/code-snippet';
+import { createApiTable } from '../../helpers/api-table';
 
 export default {
   title: 'Components/Icons',
@@ -254,21 +256,31 @@ const icons16 = {
 };
 
 const createIconGrid = (icons, size) => {
-  const container = document.createElement('div');
-  container.className = 'bsdex-icon-grid';
+  const grid = document.createElement('ion-grid');
+  grid.className = 'bsdex-icon-grid';
+
+  const row = document.createElement('ion-row');
 
   Object.entries(icons).forEach(([name, svg]) => {
-    const item = document.createElement('div');
-    item.className = 'bsdex-icon-item';
-    item.innerHTML = `
+    const col = document.createElement('ion-col');
+    col.setAttribute('size', '6');
+    col.setAttribute('size-sm', '4');
+    col.setAttribute('size-md', '3');
+    col.setAttribute('size-lg', '2');
+
+    const card = document.createElement('ion-card');
+    card.className = 'bsdex-icon-card';
+    card.innerHTML = `
       <div class="bsdex-icon-preview">${svg}</div>
       <span class="bsdex-icon-name">${name}</span>
       <span class="bsdex-icon-size">${size}px</span>
     `;
-    container.appendChild(item);
+    col.appendChild(card);
+    row.appendChild(col);
   });
 
-  return container;
+  grid.appendChild(row);
+  return grid;
 };
 
 export const Icons24px = {
@@ -833,6 +845,70 @@ export const CurrencyIconsMono = {
     const wrapper = document.createElement('div');
     wrapper.innerHTML = '<h3 style="margin-bottom: 16px; font-size: 14px; font-weight: 600; color: #7c7c7c; text-transform: uppercase; letter-spacing: 1px;">Currency Icons - Mono (' + Object.keys(currenciesMono).length + ')</h3>';
     wrapper.appendChild(createIconGrid(currenciesMono, 24));
+    return wrapper;
+  },
+};
+
+export const Code = {
+  render: () => {
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = 'display: flex; flex-direction: column; gap: 24px;';
+
+    wrapper.appendChild(createCodeSnippet(
+`<!-- Using a built-in Ionic icon -->
+<ion-icon name="heart"></ion-icon>
+
+<!-- Using a custom BSDEX SVG icon via src -->
+<ion-icon src="/assets/icons/bsdex-wallet.svg"></ion-icon>
+
+<!-- Sizing with CSS custom properties -->
+<ion-icon
+  name="alert-circle"
+  style="font-size: 32px; color: var(--bsdex-primary-base);"
+></ion-icon>
+
+<!-- Inside an ion-button -->
+<ion-button>
+  <ion-icon slot="start" name="add-circle"></ion-icon>
+  Add Item
+</ion-button>
+
+<!-- Inside an ion-item -->
+<ion-item>
+  <ion-icon slot="start" src="/assets/icons/bsdex-portfolio.svg"></ion-icon>
+  <ion-label>Portfolio</ion-label>
+</ion-item>`,
+      { label: 'Ionic Icon Usage' }
+    ));
+
+    return wrapper;
+  },
+};
+
+export const API = {
+  render: () => {
+    const wrapper = document.createElement('div');
+
+    wrapper.appendChild(createApiTable({
+      properties: [
+        { name: 'name', type: 'string', default: '-', description: 'Name of a built-in Ionicons icon (e.g. "heart", "close", "arrow-back").' },
+        { name: 'src', type: 'string', default: '-', description: 'URL or path to a custom SVG icon file. Use this for BSDEX custom icons.' },
+        { name: 'icon', type: 'string', default: '-', description: 'A combination icon value using Ionicons format.' },
+        { name: 'size', type: '"small" | "large"', default: '-', description: 'The size of the icon. Adjusts font-size of the component.' },
+        { name: 'color', type: 'string', default: '-', description: 'The color to use from your application\'s color palette.' },
+        { name: 'ios', type: 'string', default: '-', description: 'Icon to use for iOS platform.' },
+        { name: 'md', type: 'string', default: '-', description: 'Icon to use for Material Design platform.' },
+        { name: 'flip-rtl', type: 'boolean', default: 'false', description: 'If true, the icon will be flipped in RTL layouts.' },
+        { name: 'lazy', type: 'boolean', default: 'false', description: 'If true, the icon will lazy-load when visible in the viewport.' },
+        { name: 'sanitize', type: 'boolean', default: 'true', description: 'If true, the SVG content will be sanitized before injecting into the DOM.' },
+      ],
+      cssCustomProperties: [
+        { name: '--ionicon-stroke-width', description: 'Stroke width of the icon (outline icons only).' },
+        { name: 'font-size', description: 'Controls the size of the icon (inherits from parent or set directly).' },
+        { name: 'color', description: 'Controls the color of the icon (inherits from parent or set directly).' },
+      ],
+    }));
+
     return wrapper;
   },
 };

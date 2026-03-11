@@ -1,90 +1,244 @@
 import './Pagination.css';
+import { createCodeSnippet } from '../../helpers/code-snippet';
+import { createApiTable } from '../../helpers/api-table';
 
 export default {
   title: 'Components/Pagination',
   tags: ['autodocs'],
   argTypes: {
-    totalPages: { control: { type: 'number', min: 1, max: 20 } },
-    currentPage: { control: { type: 'number', min: 1, max: 20 } },
-    mode: { control: 'select', options: ['light', 'dark'] },
+    totalPages: {
+      control: { type: 'number', min: 1, max: 20 },
+      description: 'Total number of pages',
+    },
+    currentPage: {
+      control: { type: 'number', min: 1, max: 20 },
+      description: 'The currently active page (1-based)',
+    },
+    mode: {
+      control: 'select',
+      options: ['light', 'dark'],
+      description: 'Toggle dark mode background wrapper',
+    },
   },
 };
 
-const arrowLeft = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-const arrowRight = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
 
-const createPagination = ({ totalPages, currentPage, mode = 'light' }) => {
+/**
+ * Create a pagination component using ion-button and ion-icon elements.
+ */
+function createPagination({ totalPages = 5, currentPage = 1, mode = 'light' }) {
   const wrapper = document.createElement('div');
-  wrapper.style.cssText = mode === 'dark' ? 'background: #191c1d; padding: 16px; border-radius: 8px; display: inline-block;' : 'display: inline-block;';
+  if (mode === 'dark') {
+    wrapper.style.cssText = 'background: #191c1d; padding: 16px; border-radius: 8px; display: inline-block;';
+  } else {
+    wrapper.style.cssText = 'display: inline-block;';
+  }
 
-  const nav = document.createElement('nav');
-  nav.className = `bsdex-pagination${mode === 'dark' ? ' bsdex-pagination--dark' : ''}`;
+  const nav = document.createElement('div');
+  nav.style.cssText = 'display: flex; align-items: center; gap: 4px;';
 
-  const prevBtn = document.createElement('button');
-  prevBtn.className = 'bsdex-pagination__item bsdex-pagination__arrow';
-  prevBtn.innerHTML = arrowLeft;
-  if (currentPage === 1) prevBtn.disabled = true;
+  // Previous button
+  const prevBtn = document.createElement('ion-button');
+  prevBtn.setAttribute('fill', 'clear');
+  prevBtn.setAttribute('size', 'small');
+  if (currentPage === 1) prevBtn.setAttribute('disabled', '');
+  if (mode === 'dark') prevBtn.style.setProperty('--color', '#ffffff');
+
+  const prevIcon = document.createElement('ion-icon');
+  prevIcon.setAttribute('slot', 'icon-only');
+  prevIcon.setAttribute('name', 'chevron-back');
+  prevBtn.appendChild(prevIcon);
   nav.appendChild(prevBtn);
 
+  // Page number buttons
+  const pageButtons = [];
   for (let i = 1; i <= totalPages; i++) {
-    const btn = document.createElement('button');
-    btn.className = `bsdex-pagination__item${i === currentPage ? ' bsdex-pagination__item--active' : ''}`;
-    btn.textContent = i;
-    nav.appendChild(btn);
+    const btn = document.createElement('ion-button');
+    btn.setAttribute('size', 'small');
+
+    if (i === currentPage) {
+      btn.setAttribute('fill', 'solid');
+      btn.setAttribute('color', 'primary');
+      btn.style.setProperty('--background', 'var(--bsdex-primary-base)');
+      btn.style.setProperty('--color', '#ffffff');
+      btn.style.setProperty('--border-radius', 'var(--bsdex-radius-sm, 4px)');
+    } else {
+      btn.setAttribute('fill', 'clear');
+      if (mode === 'dark') {
+        btn.style.setProperty('--color', '#ffffff');
+      } else {
+        btn.style.setProperty('--color', 'var(--bsdex-dark-base)');
+      }
+    }
+
+    btn.textContent = String(i);
+    pageButtons.push(btn);
+
     btn.addEventListener('click', () => {
-      nav.querySelectorAll('.bsdex-pagination__item:not(.bsdex-pagination__arrow)').forEach(b => b.classList.remove('bsdex-pagination__item--active'));
-      btn.classList.add('bsdex-pagination__item--active');
+      pageButtons.forEach((b) => {
+        b.setAttribute('fill', 'clear');
+        b.removeAttribute('color');
+        b.style.removeProperty('--background');
+        if (mode === 'dark') {
+          b.style.setProperty('--color', '#ffffff');
+        } else {
+          b.style.setProperty('--color', 'var(--bsdex-dark-base)');
+        }
+      });
+      btn.setAttribute('fill', 'solid');
+      btn.setAttribute('color', 'primary');
+      btn.style.setProperty('--background', 'var(--bsdex-primary-base)');
+      btn.style.setProperty('--color', '#ffffff');
+      btn.style.setProperty('--border-radius', 'var(--bsdex-radius-sm, 4px)');
+
       prevBtn.disabled = (i === 1);
       nextBtn.disabled = (i === totalPages);
     });
+
+    nav.appendChild(btn);
   }
 
-  const nextBtn = document.createElement('button');
-  nextBtn.className = 'bsdex-pagination__item bsdex-pagination__arrow';
-  nextBtn.innerHTML = arrowRight;
-  if (currentPage === totalPages) nextBtn.disabled = true;
+  // Next button
+  const nextBtn = document.createElement('ion-button');
+  nextBtn.setAttribute('fill', 'clear');
+  nextBtn.setAttribute('size', 'small');
+  if (currentPage === totalPages) nextBtn.setAttribute('disabled', '');
+  if (mode === 'dark') nextBtn.style.setProperty('--color', '#ffffff');
+
+  const nextIcon = document.createElement('ion-icon');
+  nextIcon.setAttribute('slot', 'icon-only');
+  nextIcon.setAttribute('name', 'chevron-forward');
+  nextBtn.appendChild(nextIcon);
   nav.appendChild(nextBtn);
 
+  // Arrow click handlers
   prevBtn.addEventListener('click', () => {
-    const active = nav.querySelector('.bsdex-pagination__item--active');
-    const prev = active?.previousElementSibling;
-    if (prev && !prev.classList.contains('bsdex-pagination__arrow')) {
-      prev.click();
-    }
+    const activeIdx = pageButtons.findIndex((b) => b.getAttribute('fill') === 'solid');
+    if (activeIdx > 0) pageButtons[activeIdx - 1].click();
   });
   nextBtn.addEventListener('click', () => {
-    const active = nav.querySelector('.bsdex-pagination__item--active');
-    const next = active?.nextElementSibling;
-    if (next && !next.classList.contains('bsdex-pagination__arrow')) {
-      next.click();
-    }
+    const activeIdx = pageButtons.findIndex((b) => b.getAttribute('fill') === 'solid');
+    if (activeIdx < pageButtons.length - 1) pageButtons[activeIdx + 1].click();
   });
 
   wrapper.appendChild(nav);
   return wrapper;
-};
+}
+
+/**
+ * Build the Ionic markup string for code snippet display.
+ */
+function buildCodeString({ totalPages = 5, currentPage = 1 }) {
+  let code = `<div style="display: flex; align-items: center; gap: 4px;">`;
+  code += `\n  <ion-button fill="clear" size="small"${currentPage === 1 ? ' disabled' : ''}>`;
+  code += `\n    <ion-icon slot="icon-only" name="chevron-back"></ion-icon>`;
+  code += `\n  </ion-button>`;
+
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === currentPage) {
+      code += `\n  <ion-button fill="solid" color="primary" size="small">${i}</ion-button>`;
+    } else {
+      code += `\n  <ion-button fill="clear" size="small">${i}</ion-button>`;
+    }
+  }
+
+  code += `\n  <ion-button fill="clear" size="small"${currentPage === totalPages ? ' disabled' : ''}>`;
+  code += `\n    <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>`;
+  code += `\n  </ion-button>`;
+  code += `\n</div>`;
+  return code;
+}
+
+// ---------------------------------------------------------------------------
+// Stories
+// ---------------------------------------------------------------------------
 
 export const Default = {
-  render: (args) => createPagination(args),
+  render: (args) => {
+    const container = createPagination(args);
+    container.appendChild(createCodeSnippet(buildCodeString(args)));
+    return container;
+  },
   args: { totalPages: 5, currentPage: 1, mode: 'light' },
 };
 
 export const MiddlePage = {
-  render: (args) => createPagination(args),
+  render: (args) => {
+    const container = createPagination(args);
+    container.appendChild(createCodeSnippet(buildCodeString(args)));
+    return container;
+  },
   args: { totalPages: 5, currentPage: 3, mode: 'light' },
 };
 
 export const LastPage = {
-  render: (args) => createPagination(args),
+  render: (args) => {
+    const container = createPagination(args);
+    container.appendChild(createCodeSnippet(buildCodeString(args)));
+    return container;
+  },
   args: { totalPages: 5, currentPage: 5, mode: 'light' },
 };
 
 export const DarkDefault = {
-  render: (args) => createPagination(args),
+  render: (args) => {
+    const container = createPagination(args);
+    container.appendChild(createCodeSnippet(buildCodeString(args)));
+    return container;
+  },
   args: { totalPages: 5, currentPage: 1, mode: 'dark' },
 };
 
 export const DarkMiddlePage = {
-  render: (args) => createPagination(args),
+  render: (args) => {
+    const container = createPagination(args);
+    container.appendChild(createCodeSnippet(buildCodeString(args)));
+    return container;
+  },
   args: { totalPages: 5, currentPage: 3, mode: 'dark' },
+};
+
+// ---------------------------------------------------------------------------
+// API Documentation
+// ---------------------------------------------------------------------------
+
+export const API = {
+  render: () => {
+    return createApiTable({
+      properties: [
+        {
+          name: 'fill',
+          type: "'solid' | 'clear'",
+          default: "'clear'",
+          description: 'Set the fill style of page buttons. Active page uses "solid", inactive pages use "clear".',
+        },
+        {
+          name: 'color',
+          type: "'primary'",
+          default: "'primary'",
+          description: 'The color applied to the active page button.',
+        },
+        {
+          name: 'size',
+          type: "'small' | 'default' | 'large'",
+          default: "'small'",
+          description: 'Size of the pagination buttons.',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          default: 'false',
+          description: 'If true, the navigation arrow button cannot be clicked. Applied to previous arrow on first page, next arrow on last page.',
+        },
+      ],
+      cssCustomProperties: [
+        { name: '--background', description: 'Background color of the active page button.' },
+        { name: '--color', description: 'Text/icon color of the page and arrow buttons.' },
+        { name: '--border-radius', description: 'Border radius of the active page button.' },
+      ],
+    });
+  },
 };

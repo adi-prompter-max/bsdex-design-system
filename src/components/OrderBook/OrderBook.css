@@ -1,91 +1,137 @@
-.bsdex-orderbook {
-  font-family: var(--bsdex-font-family);
+/* -----------------------------------------------------------------------
+   OrderBook – Ionic web-component styles
+   ----------------------------------------------------------------------- */
+
+.orderbook-card {
+  --background: var(--ion-background-color, #fff);
+  font-family: var(--bsdex-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
   width: 100%;
 }
 
-.bsdex-orderbook__header {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 8px 12px;
-  font-size: var(--bsdex-body-tiny-size);
-  font-weight: 600;
+/* Dark mode card */
+.orderbook-card--dark {
+  --background: var(--bsdex-dark-base, #191c1d);
+  --color: #ffffff;
+}
+
+.orderbook-card--light {
+  --background: var(--bsdex-surface, #ffffff);
+}
+
+/* -----------------------------------------------------------------------
+   Header
+   ----------------------------------------------------------------------- */
+
+.orderbook-header {
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-height: 32px;
+}
+
+.orderbook-header__label {
+  font-size: var(--bsdex-body-tiny-size, 11px) !important;
+  font-weight: 600 !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--bsdex-medium-base);
+  color: var(--orderbook-header-color, var(--bsdex-medium-base, #8e9295)) !important;
 }
 
-.bsdex-orderbook__header span:last-child {
-  text-align: right;
+.orderbook-card--dark .orderbook-header__label {
+  color: var(--bsdex-medium-shade, #6b6f73) !important;
 }
 
-.bsdex-orderbook__row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 4px 12px;
-  font-size: var(--bsdex-body-small-size);
+/* -----------------------------------------------------------------------
+   Order rows – common
+   ----------------------------------------------------------------------- */
+
+.orderbook-row {
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-height: 28px;
   position: relative;
+  overflow: hidden;
 }
 
-.bsdex-orderbook__row span:last-child {
-  text-align: right;
+.orderbook-row ion-label {
+  font-size: var(--bsdex-body-small-size, 13px) !important;
+  margin: 0;
 }
 
-.bsdex-orderbook__row--ask {
-  color: var(--bsdex-danger-base);
-}
-
-.bsdex-orderbook__row--bid {
-  color: var(--bsdex-success-base);
-}
-
-.bsdex-orderbook__row--ask::before,
-.bsdex-orderbook__row--bid::before {
+/* Depth visualization – colored background bar */
+.orderbook-row::before {
   content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
+  width: var(--depth, 0%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.bsdex-orderbook__row--ask::before {
-  background: rgba(234, 6, 88, 0.08);
+/* Ask rows (red / danger) */
+.orderbook-row--ask::before {
+  background: var(--orderbook-ask-bg, rgba(234, 6, 88, 0.08));
 }
 
-.bsdex-orderbook__row--bid::before {
-  background: rgba(40, 150, 70, 0.08);
+/* Bid rows (green / success) */
+.orderbook-row--bid::before {
+  background: var(--orderbook-bid-bg, rgba(40, 150, 70, 0.08));
 }
 
-.bsdex-orderbook__spread {
-  display: flex;
-  justify-content: center;
-  padding: 6px 12px;
-  font-size: var(--bsdex-body-small-size);
-  font-weight: 600;
-  color: var(--bsdex-medium-base);
-  border-top: 1px solid var(--bsdex-light-base);
-  border-bottom: 1px solid var(--bsdex-light-base);
+/* Amount column text in light mode */
+.orderbook-card--light .orderbook-row ion-col:nth-child(2) ion-label {
+  color: var(--bsdex-dark-base, #1a1a1a) !important;
 }
 
-.bsdex-orderbook--light {
-  background: var(--bsdex-surface);
+/* Amount column text in dark mode */
+.orderbook-card--dark .orderbook-row ion-col:nth-child(2) ion-label {
+  color: #ffffff !important;
 }
 
-.bsdex-orderbook--light .bsdex-orderbook__row span:nth-child(2) {
-  color: var(--bsdex-dark-base);
+/* -----------------------------------------------------------------------
+   Spread row
+   ----------------------------------------------------------------------- */
+
+.orderbook-spread {
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-height: 32px;
+  --border-color: var(--orderbook-spread-border, var(--bsdex-light-base, #e2e8f0));
+  border-top: 1px solid var(--orderbook-spread-border, var(--bsdex-light-base, #e2e8f0));
+  border-bottom: 1px solid var(--orderbook-spread-border, var(--bsdex-light-base, #e2e8f0));
 }
 
-.bsdex-orderbook--dark {
-  background: var(--bsdex-dark-base);
+.orderbook-spread__label {
+  font-size: var(--bsdex-body-small-size, 13px) !important;
+  font-weight: 600 !important;
+  color: var(--bsdex-medium-base, #8e9295) !important;
+  width: 100%;
 }
 
-.bsdex-orderbook--dark .bsdex-orderbook__row span:nth-child(2) {
-  color: #ffffff;
+.orderbook-card--dark .orderbook-spread {
+  border-color: var(--bsdex-dark-tint, #2c2f33);
 }
 
-.bsdex-orderbook--dark .bsdex-orderbook__spread {
-  border-color: var(--bsdex-dark-tint);
+/* -----------------------------------------------------------------------
+   Ion-grid resets for tight layout
+   ----------------------------------------------------------------------- */
+
+.orderbook-row ion-grid,
+.orderbook-header ion-grid,
+.orderbook-spread ion-grid {
+  --ion-grid-padding: 0;
+  --ion-grid-column-padding: 4px;
+  padding: 0;
 }
 
-.bsdex-orderbook--dark .bsdex-orderbook__header {
-  color: var(--bsdex-medium-shade);
+.orderbook-row ion-row,
+.orderbook-header ion-row {
+  align-items: center;
 }
