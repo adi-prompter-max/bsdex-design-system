@@ -14,11 +14,72 @@ import '../src/tokens/tokens.css';
 import '../src/helpers/ionic-overrides.css';
 import '../src/helpers/device-frame.css';
 
-import { defineCustomElements } from '@ionic/core/loader';
-import { wrapInDeviceFrame } from '../src/helpers/device-frame.js';
+/* Register Ionic web components individually (standalone custom elements).
+   The lazy loader (defineCustomElements from @ionic/core/loader) doesn't work
+   in static Storybook builds because chunk paths break. */
+import { defineCustomElement as defineIonButton } from '@ionic/core/components/ion-button';
+import { defineCustomElement as defineIonIcon } from '@ionic/core/components/ion-icon';
+import { defineCustomElement as defineIonSpinner } from '@ionic/core/components/ion-spinner';
+import { defineCustomElement as defineIonInput } from '@ionic/core/components/ion-input';
+import { defineCustomElement as defineIonItem } from '@ionic/core/components/ion-item';
+import { defineCustomElement as defineIonLabel } from '@ionic/core/components/ion-label';
+import { defineCustomElement as defineIonNote } from '@ionic/core/components/ion-note';
+import { defineCustomElement as defineIonList } from '@ionic/core/components/ion-list';
+import { defineCustomElement as defineIonToggle } from '@ionic/core/components/ion-toggle';
+import { defineCustomElement as defineIonCheckbox } from '@ionic/core/components/ion-checkbox';
+import { defineCustomElement as defineIonRadio } from '@ionic/core/components/ion-radio';
+import { defineCustomElement as defineIonRadioGroup } from '@ionic/core/components/ion-radio-group';
+import { defineCustomElement as defineIonChip } from '@ionic/core/components/ion-chip';
+import { defineCustomElement as defineIonSegment } from '@ionic/core/components/ion-segment';
+import { defineCustomElement as defineIonSegmentButton } from '@ionic/core/components/ion-segment-button';
+import { defineCustomElement as defineIonCard } from '@ionic/core/components/ion-card';
+import { defineCustomElement as defineIonCardContent } from '@ionic/core/components/ion-card-content';
+import { defineCustomElement as defineIonCardHeader } from '@ionic/core/components/ion-card-header';
+import { defineCustomElement as defineIonCardTitle } from '@ionic/core/components/ion-card-title';
+import { defineCustomElement as defineIonCardSubtitle } from '@ionic/core/components/ion-card-subtitle';
+import { defineCustomElement as defineIonTabBar } from '@ionic/core/components/ion-tab-bar';
+import { defineCustomElement as defineIonTabButton } from '@ionic/core/components/ion-tab-button';
+import { defineCustomElement as defineIonAvatar } from '@ionic/core/components/ion-avatar';
+import { defineCustomElement as defineIonBadge } from '@ionic/core/components/ion-badge';
+import { defineCustomElement as defineIonGrid } from '@ionic/core/components/ion-grid';
+import { defineCustomElement as defineIonRow } from '@ionic/core/components/ion-row';
+import { defineCustomElement as defineIonCol } from '@ionic/core/components/ion-col';
+import { defineCustomElement as defineIonItemDivider } from '@ionic/core/components/ion-item-divider';
+import { defineCustomElement as defineIonText } from '@ionic/core/components/ion-text';
+import { defineCustomElement as defineIonRippleEffect } from '@ionic/core/components/ion-ripple-effect';
 
-// Register all Ionic web components
-defineCustomElements(window);
+defineIonButton();
+defineIonIcon();
+defineIonSpinner();
+defineIonInput();
+defineIonItem();
+defineIonLabel();
+defineIonNote();
+defineIonList();
+defineIonToggle();
+defineIonCheckbox();
+defineIonRadio();
+defineIonRadioGroup();
+defineIonChip();
+defineIonSegment();
+defineIonSegmentButton();
+defineIonCard();
+defineIonCardContent();
+defineIonCardHeader();
+defineIonCardTitle();
+defineIonCardSubtitle();
+defineIonTabBar();
+defineIonTabButton();
+defineIonAvatar();
+defineIonBadge();
+defineIonGrid();
+defineIonRow();
+defineIonCol();
+defineIonItemDivider();
+defineIonText();
+defineIonRippleEffect();
+
+import { wrapInDeviceFrame } from '../src/helpers/device-frame.js';
 
 /**
  * Device frame decorator — wraps stories in a mobile simulator when
