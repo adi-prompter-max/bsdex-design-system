@@ -14,6 +14,10 @@ import '../src/tokens/tokens.css';
 import '../src/helpers/ionic-overrides.css';
 import '../src/helpers/device-frame.css';
 
+/* Initialize Ionic runtime (needed for color system, mode detection, etc.) */
+import { initialize } from '@ionic/core/components';
+initialize();
+
 /* Register Ionic web components individually (standalone custom elements).
    The lazy loader (defineCustomElements from @ionic/core/loader) doesn't work
    in static Storybook builds because chunk paths break. */
