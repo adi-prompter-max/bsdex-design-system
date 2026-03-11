@@ -1,61 +1,170 @@
 import './Tabs.css';
+import { createCodeSnippet } from '../../helpers/code-snippet';
+import { createApiTable } from '../../helpers/api-table';
 
 export default {
   title: 'Components/Tabs',
   tags: ['autodocs'],
   argTypes: {
-    activeIndex: { control: { type: 'number', min: 0, max: 4 } },
-    mode: { control: 'select', options: ['light', 'dark'] },
+    selectedTab: {
+      control: 'select',
+      options: ['invest', 'wallet', 'orders', 'transactions', 'profile'],
+      description: 'The currently selected tab',
+    },
+    mode: {
+      control: 'select',
+      options: ['light', 'dark'],
+      description: 'Toggle dark mode background wrapper',
+    },
   },
 };
 
-const tabIcons = [
-  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5"/></svg>`,
-  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5"/></svg>`,
-  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 9h20" stroke="currentColor" stroke-width="1.5"/></svg>`,
-  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/></svg>`,
-  `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="1.5"/></svg>`,
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+const tabDefinitions = [
+  { tab: 'invest', label: 'Invest', icon: 'trending-up' },
+  { tab: 'wallet', label: 'Wallet', icon: 'wallet' },
+  { tab: 'orders', label: 'Orders', icon: 'receipt' },
+  { tab: 'transactions', label: 'Transactions', icon: 'swap-horizontal' },
+  { tab: 'profile', label: 'Profile', icon: 'person' },
 ];
 
-const createTabs = ({ activeIndex, mode }) => {
-  const labels = ['Invest', 'Wallet', 'Orders', 'Transactions', 'Profile'];
-  const container = document.createElement('div');
-  container.style.cssText = mode === 'dark' ? 'background: #191c1d; padding: 0;' : '';
+/**
+ * Create an ion-tab-bar with ion-tab-button children.
+ */
+function createTabBar({ selectedTab = 'invest', tabs = tabDefinitions }) {
+  const tabBar = document.createElement('ion-tab-bar');
 
-  const nav = document.createElement('nav');
-  nav.className = `bsdex-tabs bsdex-tabs--${mode}`;
+  tabs.forEach((def) => {
+    const tabButton = document.createElement('ion-tab-button');
+    tabButton.setAttribute('tab', def.tab);
+    if (def.tab === selectedTab) {
+      tabButton.setAttribute('selected', '');
+    }
 
-  labels.forEach((label, i) => {
-    const tab = document.createElement('button');
-    tab.className = `bsdex-tabs__item${i === activeIndex ? ' bsdex-tabs__item--active' : ''}`;
-    tab.innerHTML = `<span class="bsdex-tabs__icon">${tabIcons[i]}</span><span class="bsdex-tabs__label">${label}</span>`;
-    nav.appendChild(tab);
-    tab.addEventListener('click', () => {
-      nav.querySelectorAll('.bsdex-tabs__item').forEach(t => t.classList.remove('bsdex-tabs__item--active'));
-      tab.classList.add('bsdex-tabs__item--active');
-    });
+    const icon = document.createElement('ion-icon');
+    icon.setAttribute('name', def.icon);
+    const label = document.createElement('ion-label');
+    label.textContent = def.label;
+
+    tabButton.appendChild(icon);
+    tabButton.appendChild(label);
+    tabBar.appendChild(tabButton);
   });
 
-  container.appendChild(nav);
+  return tabBar;
+}
+
+/**
+ * Wrap element in an optional dark-mode container.
+ */
+function wrapWithMode(el, mode) {
+  const container = document.createElement('div');
+  if (mode === 'dark') {
+    container.style.cssText = 'background: #191c1d; padding: 0; border-radius: 8px;';
+  }
+  container.appendChild(el);
   return container;
-};
+}
+
+/**
+ * Build the Ionic markup string for code snippet display.
+ */
+function buildTabBarCodeString({ selectedTab = 'invest', tabs = tabDefinitions }) {
+  const tabLines = tabs.map((def) => {
+    const selectedAttr = def.tab === selectedTab ? ' selected' : '';
+    return `  <ion-tab-button tab="${def.tab}"${selectedAttr}>
+    <ion-icon name="${def.icon}"></ion-icon>
+    <ion-label>${def.label}</ion-label>
+  </ion-tab-button>`;
+  }).join('\n');
+
+  return `<ion-tab-bar>\n${tabLines}\n</ion-tab-bar>`;
+}
+
+// ---------------------------------------------------------------------------
+// Stories
+// ---------------------------------------------------------------------------
 
 export const Light = {
-  render: (args) => createTabs(args),
-  args: { activeIndex: 0, mode: 'light' },
+  render: (args) => {
+    const container = wrapWithMode(createTabBar(args), args.mode);
+    container.appendChild(createCodeSnippet(buildTabBarCodeString(args)));
+    return container;
+  },
+  args: { selectedTab: 'invest', mode: 'light' },
 };
 
 export const Dark = {
-  render: (args) => createTabs(args),
-  args: { activeIndex: 0, mode: 'dark' },
+  render: (args) => {
+    const container = wrapWithMode(createTabBar(args), args.mode);
+    container.appendChild(createCodeSnippet(buildTabBarCodeString(args)));
+    return container;
+  },
+  args: { selectedTab: 'invest', mode: 'dark' },
 };
 
 export const Wallet = {
-  render: (args) => createTabs(args),
-  args: { activeIndex: 1, mode: 'light' },
+  render: (args) => {
+    const container = wrapWithMode(createTabBar(args), args.mode);
+    container.appendChild(createCodeSnippet(buildTabBarCodeString(args)));
+    return container;
+  },
+  args: { selectedTab: 'wallet', mode: 'light' },
 };
 
 export const Transactions = {
-  render: (args) => createTabs(args),
-  args: { activeIndex: 3, mode: 'light' },
+  render: (args) => {
+    const container = wrapWithMode(createTabBar(args), args.mode);
+    container.appendChild(createCodeSnippet(buildTabBarCodeString(args)));
+    return container;
+  },
+  args: { selectedTab: 'transactions', mode: 'light' },
+};
+
+// ---------------------------------------------------------------------------
+// API Documentation
+// ---------------------------------------------------------------------------
+
+export const API = {
+  render: () => {
+    const container = document.createElement('div');
+
+    // ion-tab-bar heading
+    const tabBarHeading = document.createElement('h2');
+    tabBarHeading.style.cssText = 'margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #1a1a1a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;';
+    tabBarHeading.textContent = 'ion-tab-bar';
+    container.appendChild(tabBarHeading);
+
+    container.appendChild(createApiTable({
+      properties: [
+        { name: 'color', type: "'primary' | 'secondary' | 'success' | 'warning' | 'danger'", default: 'undefined', description: 'The color to use from the application color palette.' },
+        { name: 'selectedTab', type: 'string', default: 'undefined', description: 'The selected tab in the tab bar.' },
+        { name: 'translucent', type: 'boolean', default: 'false', description: 'If true, the tab bar will be translucent. Only applies when mode is "ios".' },
+      ],
+      cssCustomProperties: [
+        { name: '--background', description: 'Background of the tab bar.' },
+        { name: '--color', description: 'Color of the unselected tab buttons.' },
+        { name: '--color-selected', description: 'Color of the selected tab button.' },
+      ],
+    }));
+
+    // ion-tab-button heading
+    const tabBtnHeading = document.createElement('h2');
+    tabBtnHeading.style.cssText = 'margin: 32px 0 16px 0; font-size: 18px; font-weight: 600; color: #1a1a1a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;';
+    tabBtnHeading.textContent = 'ion-tab-button';
+    container.appendChild(tabBtnHeading);
+
+    container.appendChild(createApiTable({
+      properties: [
+        { name: 'tab', type: 'string', default: 'undefined', description: 'A tab identifier string that matches the tab to display when this button is clicked.' },
+        { name: 'disabled', type: 'boolean', default: 'false', description: 'If true, the user cannot interact with the tab button.' },
+        { name: 'selected', type: 'boolean', default: 'false', description: 'If true, the tab button is currently selected.' },
+      ],
+    }));
+
+    return container;
+  },
 };

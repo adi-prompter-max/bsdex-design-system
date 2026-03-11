@@ -1,0 +1,128 @@
+/*
+ * Ionic CSS Overrides for Storybook
+ *
+ * Prevents Ionic's global styles from interfering with:
+ * - Custom bsdex-* components
+ * - Storybook UI elements
+ * - Device frame / code snippet / API table helpers
+ */
+
+/* --------------------------------------------------------------------------
+   1. Neutralize Ionic's aggressive body/html resets
+   -------------------------------------------------------------------------- */
+
+html {
+  /* Ionic normalize sets 100% height which breaks Storybook scroll */
+  height: auto !important;
+}
+
+body {
+  /* Ionic structure.css makes body position:fixed — override if loaded */
+  position: static !important;
+  overflow: auto !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Remove outlines / focus rings from non-Ionic elements
+   -------------------------------------------------------------------------- */
+
+/* All bsdex custom components — no Ionic outlines */
+[class^="bsdex-"],
+[class*=" bsdex-"],
+[class^="bsdex-"] *,
+[class*=" bsdex-"] * {
+  outline: none !important;
+  --highlight-background: transparent;
+}
+
+[class^="bsdex-"] input:focus,
+[class^="bsdex-"] button:focus,
+[class^="bsdex-"] select:focus,
+[class^="bsdex-"] textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Storybook canvas elements */
+.code-snippet *,
+.api-table-section *,
+.device-frame *,
+.device-frame-wrapper * {
+  outline: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Ionic theme variables — BSDEX brand
+   -------------------------------------------------------------------------- */
+
+:root {
+  --ion-color-primary: var(--bsdex-primary-base);
+  --ion-color-primary-rgb: 100, 50, 250;
+  --ion-color-primary-shade: var(--bsdex-primary-shade);
+  --ion-color-primary-tint: var(--bsdex-primary-tint);
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+
+  --ion-color-success: var(--bsdex-success-base);
+  --ion-color-success-shade: var(--bsdex-success-shade);
+  --ion-color-success-tint: var(--bsdex-success-tint);
+  --ion-color-success-contrast: #ffffff;
+
+  --ion-color-warning: var(--bsdex-warning-base);
+  --ion-color-warning-shade: var(--bsdex-warning-shade);
+  --ion-color-warning-tint: var(--bsdex-warning-tint);
+  --ion-color-warning-contrast: #000000;
+
+  --ion-color-danger: var(--bsdex-danger-base);
+  --ion-color-danger-shade: var(--bsdex-danger-shade);
+  --ion-color-danger-tint: var(--bsdex-danger-tint);
+  --ion-color-danger-contrast: #ffffff;
+
+  --ion-font-family: var(--bsdex-font-family);
+  --ion-background-color: #ffffff;
+  --ion-text-color: #000000;
+
+  --ion-item-border-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   4. Ionic component refinements for BSDEX look
+   -------------------------------------------------------------------------- */
+
+/* Rounded buttons by default */
+ion-button {
+  --border-radius: var(--bsdex-radius-full);
+  font-family: var(--bsdex-font-family);
+  letter-spacing: 0.01em;
+}
+
+/* Clean input styling */
+ion-input {
+  font-family: var(--bsdex-font-family);
+}
+
+/* Remove default Ionic item borders */
+ion-item {
+  --inner-border-width: 0;
+  --border-width: 0;
+}
+
+/* BSDEX primary toggle color */
+ion-toggle {
+  --track-background-checked: var(--bsdex-primary-base);
+}
+
+ion-checkbox {
+  --checkbox-background-checked: var(--bsdex-primary-base);
+  --border-color-checked: var(--bsdex-primary-base);
+}
+
+ion-radio {
+  --color-checked: var(--bsdex-primary-base);
+}
+
+ion-segment-button {
+  font-family: var(--bsdex-font-family);
+}

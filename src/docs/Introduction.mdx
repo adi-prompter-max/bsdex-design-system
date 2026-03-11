@@ -6,34 +6,67 @@ import { Meta } from '@storybook/blocks';
 
 Welcome to the **BSDEX Ionic Design System** — the single source of truth for UI components, design tokens, and patterns used across BSDEX products.
 
+Built on **Ionic Framework** web components for production-ready, copy-pasteable code that works in any framework.
+
 ## What's inside
 
 - **Foundation** — Design tokens including colors, typography, and spacing
-- **Components** — Reusable UI components with live previews and API documentation
+- **Components** — Ionic web components with live previews, API docs, CSS custom properties, and copy-paste code
+- **Device Preview** — Use the platform toolbar (top) to preview components in iOS or Android device frames
 
 ## Getting Started
 
 ### Installation
 
 ```bash
-npm install @bsdex/design-system
+npm install @ionic/core ionicons
 ```
 
-### Import tokens
+### Import Ionic and BSDEX tokens
 
-```css
-@import '@bsdex/design-system/tokens.css';
+```js
+import { defineCustomElements } from '@ionic/core/loader';
+import '@ionic/core/css/ionic.bundle.css';
+import '@bsdex/design-system/tokens.css';
+
+defineCustomElements(window);
 ```
 
 ### Use components
 
 ```html
-<bsdex-button type="solid" size="default">Click me</bsdex-button>
+<ion-button fill="solid" color="primary">Buy Bitcoin</ion-button>
+
+<ion-input label="Amount" label-placement="stacked" fill="outline" placeholder="0.00"></ion-input>
+
+<ion-toggle checked color="primary">Enable notifications</ion-toggle>
 ```
+
+### Platform modes
+
+Ionic components automatically adapt to iOS and Android styling:
+
+```html
+<!-- Force iOS mode -->
+<ion-button mode="ios" fill="solid">iOS Button</ion-button>
+
+<!-- Force Android (Material) mode -->
+<ion-button mode="md" fill="solid">Android Button</ion-button>
+```
+
+## Component Documentation
+
+Each component page includes:
+- **Live preview** with interactive controls
+- **Copy-paste code** — real Ionic markup you can use directly
+- **Properties** — all available attributes and their types
+- **CSS Custom Properties** — for styling the shadow DOM
+- **Shadow Parts** — for deep CSS customization via `::part()`
 
 ## Design Resources
 
 - [Figma Library](https://www.figma.com/design/H35BZXWhn51TItiUlU5lTI/BSDEX-ionic-Library)
+- [Ionic Framework Docs](https://ionicframework.com/docs)
 
 ## Contributing
 
